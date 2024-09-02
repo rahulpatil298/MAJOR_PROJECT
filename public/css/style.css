@@ -113,6 +113,8 @@ body {
     padding-right: 0;
 }
 
+
+
 .edit-img {
     width: 15rem !important;
 }
@@ -120,4 +122,18 @@ body {
 #map {
     height: 400px;
     width: 80vh;
+}
+@media (max-width: 768px) {
+    #map{
+        height: 300px;
+        width: 32vh;
+    }
+
+    .offset-3 {
+        margin-left: 15% !important;
+    }
+    
+    .col-6 {
+        width: 75% !important;
+    }
 }

@@ -35,53 +35,117 @@
       display: flex;
       align-items: center;
     }
+
+    /* slidebar */
+    .slider-container {
+      width: 70%; /* Set the width of the visible area */
+      overflow: hidden; /* Hide overflow content */
+      position: relative; /* Positioning context for arrows */
+      margin: auto;
+    }
+
+    .slider-wrapper {
+      display: flex; /* Flexbox for horizontal layout */
+      transition: transform 0.5s ease; /* Smooth sliding transition */
+      width: max-content; /* Set width to the total content width */
+    }
+
+    .slider-item {
+      align-items: center;
+      justify-content: center;
+      
+    }
+
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      
+      border: none;
+      cursor: pointer;
+      padding: 10px;
+      border-radius: 50%;
+    }
+
+    .arrow-left {
+      left: 0;
+    }
+
+    .arrow-right {
+      right: 0;
+    }
+
+    @media (max-width: 768px) {
+      .slider-container{
+        display: none;
+      }
+    }
 </style>
    
 <div id="filters">
-  <div class="filter">
-    <div><i class="fa-solid fa-fire"></i></div>
-    <p>Tranding</p>
+  <div class="slider-container">
+    <!-- <button class="arrow arrow-left" onclick="slide(-1)"><i class="fa-solid fa-circle-chevron-left"></i></button> -->
+    <div class="slider-wrapper">
+      <div class="filter slider-item"></div>
+      <div class="filter slider-item">
+        <div><i class="fa-solid fa-fire"></i></div>
+        <p>Tranding</p>
+      </div>
+      <div class="filter slider-item">
+        <div><i class="fa-solid fa-bed"></i></div>
+        <p>Room</p>
+      </div>
+      <div class="filter slider-item">
+        <div><i class="fa-solid fa-mountain-city"></i></div>
+        <p>Iconic Cities</p>
+      </div>
+      <div class="filter slider-item">
+        <div><i class="fa-solid fa-mountain"></i></div>
+        <p>Mountains</p>
+      </div>
+      <div class="filter slider-item">
+        <div><i class="fa-brands fa-fort-awesome"></i></div>
+        <p>castles</p>
+      </div>
+      <div class="filter slider-item">
+        <div><i class="fa-solid fa-person-swimming"></i></i></div>
+        <p>Amazing Pools</p>
+      </div>
+      <div class="filter slider-item">
+        <div><i class="fa-solid fa-campground"></i></div>
+        <p>Camping</p>
+      </div>
+      <div class="filter slider-item">
+        <div><i class="fa-solid fa-tractor"></i></div>
+        <p>Farms</p>
+      </div>
+      <div class="filter slider-item">
+        <div><i class="fa-solid fa-snowflake"></i></i></i></div>
+        <p>Arctic</p>
+      </div>
+      <div class="filter slider-item">
+        <div><i class="fa-solid fa-igloo"></i></div>
+        <p>Domes</p>
+      </div>
+      <div class="filter slider-item">
+        <div><i class="fa-solid fa-ship"></i></div>
+        <p>Boats</p>
+      </div>
+      <div class="filter slider-item">
+        <div><i class="fa-solid fa-mountain"></i></div>
+        <p>Mountains</p>
+      </div>
+      <div class="filter slider-item">
+        <div><i class="fa-brands fa-fort-awesome"></i></div>
+        <p>castles</p>
+      </div>
+  
+    </div>
+    <button class="arrow arrow-right" onclick="slide(5)"><i class="fa-solid fa-circle-chevron-right"></i></button>
   </div>
-  <div class="filter">
-    <div><i class="fa-solid fa-bed"></i></div>
-    <p>Room</p>
-  </div>
-  <div class="filter">
-    <div><i class="fa-solid fa-mountain-city"></i></div>
-    <p>Iconic Cities</p>
-  </div>
-  <div class="filter">
-    <div><i class="fa-solid fa-mountain"></i></div>
-    <p>Mountains</p>
-  </div>
-  <div class="filter">
-    <div><i class="fa-brands fa-fort-awesome"></i></div>
-    <p>castles</p>
-  </div>
-  <div class="filter">
-    <div><i class="fa-solid fa-person-swimming"></i></i></div>
-    <p>Amazing Pools</p>
-  </div>
-  <div class="filter">
-    <div><i class="fa-solid fa-campground"></i></div>
-    <p>Camping</p>
-  </div>
-  <div class="filter">
-    <div><i class="fa-solid fa-tractor"></i></div>
-    <p>Farms</p>
-  </div>
-  <div class="filter">
-    <div><i class="fa-solid fa-snowflake"></i></i></i></div>
-    <p>Arctic</p>
-  </div>
-  <div class="filter">
-    <div><i class="fa-solid fa-igloo"></i></div>
-    <p>Domes</p>
-  </div>
-  <div class="filter">
-    <div><i class="fa-solid fa-ship"></i></div>
-    <p>Boats</p>
-  </div>
+  
+
+  
   <div class="tax-toggle">
     <div class="form-check-reverse form-switch">
       <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
@@ -128,6 +192,24 @@
   
     }
   })
+
+
+  let currentIndex = 0;
+    const itemsToShow = 4; // Number of items visible at a time
+    const sliderWrapper = document.querySelector('.slider-wrapper');
+    const sliderItems = document.querySelectorAll('.slider-item');
+    const totalItems = sliderItems.length;
+
+    function slide(direction) {
+      const itemWidth = sliderItems[0].offsetWidth + 10; // Include margin
+      currentIndex += direction;
+      if (currentIndex < 0) {
+        currentIndex = 0; // Prevent sliding before the first item
+      } else if (currentIndex > totalItems - itemsToShow) {
+        currentIndex = totalItems - itemsToShow; // Prevent sliding after the last item
+      }
+      sliderWrapper.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+    }
 </script>
 
 

@@ -19,6 +19,25 @@
     border-radius: 25px;
     padding: 0.5rem 3rem 0.5rem 3rem;
   }
+
+  @media (max-width: 768px) {
+   
+  .container {
+    padding: 10px;
+  }
+  .navbar-collapse {
+      background-color: aqua;
+      position: static;
+      text-align: center;
+    }
+  .btn-bg {
+    border: 2px solid black;
+    border-radius: 20px;
+    background-color: #28A745;
+    margin: 2% 20% 2% 20%;
+  }
+    
+  }
 </style>
 
 
@@ -40,13 +59,13 @@
         </form>
       </div>
       <div class="navbar-nav ms-auto">
-        <a class="nav-link" href="/listings/new">Airbnb Your home </a>
+        <a class="nav-link btn-bg" href="/listings/new">Airbnb Your home </a>
         <% if(!currUser) { %>
-          <a class="nav-link" href="/signup"><b>Sign Up</b></a>
-          <a class="nav-link" href="/login"><b>Log In</b> </a>
+          <a class="nav-link btn-bg" href="/signup"><b>Sign Up</b></a>
+          <a class="nav-link btn-bg" href="/login"><b>Log In</b> </a>
               <% } %>
                 <% if(currUser) { %>
-                  <a class="nav-link" href="/logout"><b>Log Out</b></a>
+                  <a class="nav-link btn-bg" href="/logout"><b>Log Out</b></a>
                   <% } %>
       </div>
     </div>
