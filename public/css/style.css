@@ -123,6 +123,7 @@ body {
     height: 400px;
     width: 80vh;
 }
+<<<<<<< HEAD
 @media (max-width: 768px) {
     #map{
         height: 300px;
@@ -137,3 +138,7 @@ body {
         width: 75% !important;
     }
 }
+=======
+
+ 
+>>>>>>> 083e306a9a20578fdd39abc68c8718b9297130aa
